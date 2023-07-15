@@ -14,10 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Income.init({
-    Datetime: DataTypes.DATE,
+    Datatime: DataTypes.DATE,
     IncomeHead: DataTypes.STRING,
     Amount: DataTypes.INTEGER,
-    Description: DataTypes.STRING
+    Description: DataTypes.STRING,
+    TotalIncome: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Income',

@@ -14,10 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Expenses.init({
-    Datetime: DataTypes.DATE,
+    Datatime: DataTypes.DATE,
     ExpenseHead: DataTypes.STRING,
     Amount: DataTypes.INTEGER,
-    Description: DataTypes.STRING
+    Description: DataTypes.STRING,
+    TotalExpense: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Expenses',
