@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Between Dates</title>
+</head>
+<body>
+    <h1>Data Between Dates</h1>
+    <form action="/getreport" method="get">
+        <label for="start-date">Start Date:</label>
+        <input type="date" id="start-date" name="date1" required>
+        <br>
+        <label for="end-date">End Date:</label>
+        <input type="date" id="end-date" name="date2" required>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    
+    <% if (between_income && between_expense) { %>
+        <h2>Income:</h2>
+        <ul>
+            <% between_income.forEach((income) => { %>
+                <li>Income Amount: <%= income.amount %></li>
+                <li>Income Date: <%= income.date %></li>
+                <!-- Add more fields as per your Income model -->
+            <% }) %>
+        </ul>
+        <h2>Expenses:</h2>
+        <ul>
+            <% between_expense.forEach((expense) => { %>
+                <li>Expense Amount: <%= expense.amount %></li>
+                <li>Expense Date: <%= expense.date %></li>
+                <!-- Add more fields as per your Expense model -->
+            <% }) %>
+        </ul>
+    <% } %>
+</body>
+</html>

@@ -24,6 +24,10 @@ app.get('/',async (request,response) => {
     });
 })
 
+app.get('/report', async (request,response) => {
+    response.render('report');
+})
+
 app.post('/addincome',async (request,response) => {
     console.log(request.body);
     const lastIncome = await Income.findOne({
@@ -47,6 +51,19 @@ app.post('/addincome',async (request,response) => {
     }
 
 })
+app.get('/getreport', async (request,response) => {
+    const start_date = request.query.date1;
+    const end_date = request.query.date2;
+    console.log(start_date,end_date);
+    const between_income = await Income.get_between_incomes(start_date,end_date);
+    const between_expense = await Expenses.get_between_expenses(start_date,end_date);
+    response.render("reportk",{
+        between_expense,
+        between_income
+    })
+
+})
+
 
 
 app.post("/addexpense", async (request,response) => {
@@ -76,5 +93,6 @@ app.post("/addexpense", async (request,response) => {
         console.log(error);
         return response.status(422).json(error);
     }
+    
 });
 module.exports = app;

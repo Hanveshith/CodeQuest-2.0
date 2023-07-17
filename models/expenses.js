@@ -1,6 +1,6 @@
 'use strict';
 const {
-  Model
+  Model,Op
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Expenses extends Model {
@@ -12,6 +12,22 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+    
+
+    static get_between_expenses({ start_date, end_date }) {
+      const startDate = new Date(start_date);
+      const endDate = new Date(end_date);
+      console.log(startDate,endDate);
+      console.log(new Date())
+      return this.findAll({
+        where: {
+          Datatime: {
+            [Op.gt]: startDate,
+            [Op.lt]: endDate,
+          },
+        },
+      });
+    }
 
     static todayexpenses(){ 
       return this.findAll({ 
@@ -20,6 +36,7 @@ module.exports = (sequelize, DataTypes) => {
         } 
       }) 
     }
+    
 
     static addExpense({ExpenseHead,Amount,Description,Datatime,TotalExpense}){ 
       return this.create({ 
