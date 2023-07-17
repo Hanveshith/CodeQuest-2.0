@@ -12,6 +12,24 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+
+    static todayexpenses(){ 
+      return this.findAll({ 
+        where : { 
+          Datatime : new Date(), 
+        } 
+      }) 
+    }
+
+    static addExpense({ExpenseHead,Amount,Description,Datatime,TotalExpense}){ 
+      return this.create({ 
+        Datatime:Datatime, 
+        ExpenseHead,ExpenseHead, 
+        Amount:Amount, 
+        Description:Description, 
+        TotalExpense: TotalExpense
+      }); 
+    }
   }
   Expenses.init({
     Datatime: DataTypes.DATE,

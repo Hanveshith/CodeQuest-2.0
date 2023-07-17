@@ -10,6 +10,28 @@
             background-color: #CCEEFF;
             margin: 0px;
         }
+        .balance{
+            display: flex;
+        }
+        p{
+            margin-right: 20px;
+        }
+        .info{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .table{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width:100%;
+        }
+        .table1,.table2{
+            width: 40%;
+            border: none;
+            margin-top: 0%;
+        }
 
         h1{
             margin: 0px;
@@ -73,7 +95,9 @@
             text-align: center;
 
         }
-
+        td,th{
+            border: none;
+        }
         td {
             padding: 10px;
             border: 1px solid blue;
@@ -86,6 +110,7 @@
             margin-top: 20px;
             width: 80%;
         }
+        
     </style>
 </head>
 
@@ -95,78 +120,77 @@
     </div>
     <div class="cont">
         <div class="box1">
-            <form action="">
-                <p>Income head</p> <input type="text" id="income" placeholder="Enter your income head">
-                <p>Amount</p> <input type="text" id="amount" placeholder="Enter your amount">
-                <p>Description</p> <input type="text" id="description" placeholder="Enter your description....">
+            <form action="/addincome" method="post">
+                <p>Income head</p> <input type="text" id="income" name="IncomeHead" placeholder="Enter your income head">
+                <p>Amount</p> <input type="text" id="amount" name="incomeAmount" placeholder="Enter your amount">
+                <p>Description</p> <input type="text" id="description" name="incomeDescription" placeholder="Enter your description....">
                 <br>
                 <br>
                 <button>SUBMIT</button>
             </form>
         </div>
         <div class="box2">
-            <form action="">
-                <p>Expense head</p> <input type="text" id="income" placeholder="Enter your expense head">
-                <p>Amount</p> <input type="text" id="amount" placeholder="Enter your amount">
-                <p>Description</p> <input type="text" id="description" placeholder="Enter your description....">
+            <form action="/addexpense" method="post">
+                <p>Expense head</p> <input type="text" id="income" name="expense_head" placeholder="Enter your expense head">
+                <p>Amount</p> <input type="text" id="amount" name="expense_amount" placeholder="Enter your amount">
+                <p>Description</p> <input type="text"  id="description"name="expense_description" placeholder="Enter your description....">
                 <br>
                 <br>
                 <button>SUBMIT</button>
             </form>
         </div>
     </div>
-    <div class="table1">
-        <table>
-            <tr>
-                <td colspan="4"> <b>PETTY CASH BOOK</b></td>
-            </tr>
-            <tr style="text-align: center;">
-                <td colspan="2"><b>DATE</b></td>
-                <td colspan="2">15-07-2023</td>
-
-            </tr>
-            <tr>
-            <tr style="text-align: center;">
-                <td colspan="2"><b>OPENING BALANCE</b></td>
-                <td colspan="2">1000.00</td>
-            </tr>
-            <tr>
-                <td><b>INCOME HEAD</b></td>
-                <td><b>AMOUNT</b></td>
-                <td><b>EXPENSE HEAD</b></td>
-                <td><b>AMOUNT</b></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
+    <div class="info">
+        <div>
+            <h1>PEETY CASH BOOK</h1>
+            <p>DATE</p>
+            <div class="balance">
+                <% if (lastIncome && lastIncome.Amount) { %>
+                    <p>OPENING BALANCE :</p>
+                    <p><%= lastIncome.Amount %></p> 
+                <% } %>
+                
+            </div>
+        </div>
+    </div>
+    <div class="table-container">
+        <div class="table">
+            <div class="table1">
+                <table>
+                    <tr>
+                        <td><b>INCOME HEAD</b></td>
+                        <td><b>AMOUNT</b></td>
+                    </tr>
+                    <% incomevalues.forEach(income => { %>
+                        <tr>
+                          <td><%= income.IncomeHead %></td>
+                          <td><%= income.Amount %></td>
+                        </tr>
+                      <% }); %>
+                </table>
+            </div>
+            <div class="table2">
+                <table>
+                    <tr>
+                        <td><b>EXPENSE HEAD</b></td>
+                        <td><b>AMOUNT</b></td>
+                    </tr>
+                    <% todayexpenses.forEach(expense => { %>
+                        <tr>
+                          <td><%= expense.ExpenseHead %></td>
+                          <td><%= expense.Amount %></td>
+                        </tr>
+                      <% }); %>
+                </table>
+            </div>
+        </div>
+        <% if (lastIncome) { %>
+            <div class="income">
+                <div class="balance">
+                    <%= lastIncome.TotalIncome %>
+                </div>
+            </div>
+        <% } %>
     </div>
 </body>
 

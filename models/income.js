@@ -12,6 +12,17 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+
+    static enterincome({ IncomeHead, incomeAmount, incomeDescription,TotalIncome }) {
+      return this.create({
+        Datatime: new Date(),
+        IncomeHead: IncomeHead,
+        Amount: incomeAmount,
+        Description: incomeDescription,
+        TotalIncome: TotalIncome
+      });
+    }
+    
   }
   Income.init({
     Datatime: DataTypes.DATE,

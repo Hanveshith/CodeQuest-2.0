@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon -e js,ejs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "git": "^0.1.5",
+    "nodemon": "^3.0.1",
     "sequelize-cli": "^6.6.1"
   },
   "dependencies": {
