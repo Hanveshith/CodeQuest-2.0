@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
   static get_between_incomes({start_date,end_date}){
     const startDate = new Date(start_date);
     const endDate = new Date(end_date);
+    console.log(start_date,end_date)
     console.log(startDate,endDate);
     console.log(new Date())
     return this.findAll({

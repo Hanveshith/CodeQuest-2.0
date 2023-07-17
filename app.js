@@ -55,8 +55,8 @@ app.get('/getreport', async (request,response) => {
     const start_date = request.query.date1;
     const end_date = request.query.date2;
     console.log(start_date,end_date);
-    const between_income = await Income.get_between_incomes(start_date,end_date);
-    const between_expense = await Expenses.get_between_expenses(start_date,end_date);
+    const between_income = await Income.get_between_incomes({start_date,end_date});
+    const between_expense = await Expenses.get_between_expenses({start_date,end_date});
     response.render("reportk",{
         between_expense,
         between_income

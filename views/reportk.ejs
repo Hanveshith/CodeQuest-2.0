@@ -2,6 +2,66 @@
 <html>
 <head>
     <title>Data Between Dates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4391b8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2f65d1;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
     <h1>Data Between Dates</h1>
@@ -14,24 +74,40 @@
         <br>
         <input type="submit" value="Submit">
     </form>
-    
+
     <% if (between_income && between_expense) { %>
         <h2>Income:</h2>
-        <ul>
+        <table>
+            <tr>
+                <th>Income Head</th>
+                <th>Income Amount</th>
+                <th>Income Date</th
+            </tr>
             <% between_income.forEach((income) => { %>
-                <li>Income Amount: <%= income.amount %></li>
-                <li>Income Date: <%= income.date %></li>
-                <!-- Add more fields as per your Income model -->
+                <tr>
+                    <td><%= income.IncomeHead %></td>
+                    <td><%= income.Amount %></td>
+                    <td><%= income.Datatime.toLocaleString('en-US', { timeZone: 'UTC' }) %></td>
+                </tr>
             <% }) %>
-        </ul>
+        </table>
+
         <h2>Expenses:</h2>
-        <ul>
+        <table>
+            <tr>
+                <th>ExpenseHead</th>
+                <th>Expense Amount</th>
+                <th>Expense Date</th>
+            </tr>
             <% between_expense.forEach((expense) => { %>
-                <li>Expense Amount: <%= expense.amount %></li>
-                <li>Expense Date: <%= expense.date %></li>
-                <!-- Add more fields as per your Expense model -->
+                <tr>
+                    <td><%= expense.ExpenseHead %></td>
+                    <td><%= expense.Amount %></td>
+                    <td><%= expense.Datatime.toLocaleString('en-US', { timeZone: 'UTC' }) %></td>
+
+                </tr>
             <% }) %>
-        </ul>
+        </table>
     <% } %>
 </body>
 </html>

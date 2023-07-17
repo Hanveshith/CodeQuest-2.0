@@ -2,18 +2,62 @@
 <html>
 <head>
     <title>Data Between Dates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="datetime-local"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4391b8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #7dc1e3;
+        }
+    </style>
 </head>
 <body>
     <h1>Data Between Dates</h1>
     <form action="/getreport" method="get">
         <label for="date1">Start Date:</label>
-        <input type="date" id="date1" name="date1" required>
+        <input type="datetime-local" id="date1" name="date1" required>
         <br>
         <label for="date2">End Date:</label>
-        <input type="date" id="date2" name="date2" required>
+        <input type="datetime-local" id="date2" name="date2" required>
         <br>
         <input type="submit" value="Submit">
     </form>
-
 </body>
 </html>

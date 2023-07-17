@@ -1,21 +1,21 @@
 {
   "development": {
     "username": "postgres",
-    "password": "congo",
+    "password": "changeme",
     "database": "database_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
-    "password": "congo",
+    "password": "changeme",
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
-    "password": "congo",
+    "password": "changeme",
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "postgres"
